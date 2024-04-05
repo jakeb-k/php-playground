@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task; 
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -13,6 +17,10 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all(); 
+        
+        return Inertia::render('Dashboard', [
+            'tasks' => $tasks,
+        ]);
     }
 
     /**
