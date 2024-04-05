@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="flex justify-center">
         <div :class="getPriorityClass(task.priority)">
-           <p>{{ task.task }}</p> 
-            <p>{{ task.due_date }}</p>
+           <p class="text-xl">{{ task.task }}</p> 
+            <p class="text-right">{{ task.due_date }}</p>
         </div>
     </div>
 </template>
@@ -16,11 +16,11 @@
             getPriorityClass(priority) {
                 switch(priority){
                     case 1 :
-                        return 'bg-red-500';
+                        return 'my-2.5 w-1/2 rounded-md bg-red-500 px-20 py-5';
                     case 2 :
-                        return 'bg-yellow-500';
+                        return 'my-2.5 w-1/2 rounded-md bg-yellow-500 px-20 py-5';
                     case 3 :
-                        return 'bg-green-500';
+                        return 'my-2.5 w-1/2 rounded-md bg-green-500 px-20 py-5';
                 }
             }
         },
