@@ -17,5 +17,6 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <example-component></example-component>
     </body>
 </html>
