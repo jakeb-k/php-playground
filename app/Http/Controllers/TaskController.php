@@ -40,7 +40,6 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request); 
         $validatedData = $request->validate([
             'task' => 'required|max:80',
             'priority' => 'required|integer',
@@ -53,10 +52,10 @@ class TaskController extends Controller
         $task->due_date = $validatedData['due_date']; 
         $task->save(); 
 
-        return Inertia::render('Dashboard', [
-            'tasks' => $tasks,
-            'success_msg'=> 'Successfully added task!' 
-        ]);
+        session()->flash('success_msg', 'Goal was added!');
+        
+        return Inertia::location(url('/dashboard'));
+
     }
 
     /**
