@@ -71,7 +71,10 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        dd('hi'. $id); 
+        $task = Task::find($id);
+        
+
+        return Inertia::render('Tasks/Edit', ['task' => $task]);
     }
 
     /**

@@ -5,10 +5,10 @@ import { Link } from '@inertiajs/vue3';
     <div class="flex justify-center">
         <div :class="getPriorityClass(task.priority)">
            <p class="text-xl">{{ task.task }}</p> 
-            <div class="flex flex-row mt-5">
-                <Link class="rounded-lg h-10 mt-5 mr-10 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
+            <div class="flex flex-row mt-5 w-full">
+                <Link class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
                       :href="'tasks/'+task.id+'/edit'">EDIT</Link>
-                <button class="rounded-lg h-10 mt-5 mr-10 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" @click="deleteTask(task.id)">DELETE</button>
+                <button class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" @click="deleteTask(task.id)">DELETE</button>
                 <p>{{ task.due_date }}</p>
             </div>
         </div>

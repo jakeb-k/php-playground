@@ -1,10 +1,10 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import CreateForm from '@/Components/CreateForm.vue'; 
+import EditForm from '@/Components/EditForm.vue'; 
 
 </script>
 <template>
     <AuthenticatedLayout>
-        <CreateForm></CreateForm>
+        <EditForm></EditForm>
     </AuthenticatedLayout>
 </template>
