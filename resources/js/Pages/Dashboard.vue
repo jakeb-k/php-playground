@@ -15,20 +15,20 @@ const props = defineProps({
     <Head title="Dashboard" />
     <AuthenticatedLayout>
         <template #header>
-
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
-       
-        
-     
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
+                    <div class="flex justify-between">
+                        <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
+                        <Link class="rounded-lg h-10 mt-5 mr-10 p-2 bg-green-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
+                              href="tasks/create">Add Task</Link>
+
+                    </div>
                     <div v-for="task in tasks">
                         <Task :task="task"></Task>
                     </div>
-                    <Link class="rounded-lg m-20 p-5 bg-green-400 hover:bg-white hover:border-gray-700 border-transparent border-2" href="tasks/create">Add Task</Link>
 
                 </div>
             </div>

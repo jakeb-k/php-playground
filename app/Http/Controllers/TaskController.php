@@ -71,7 +71,7 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd('hi'. $id); 
     }
 
     /**
@@ -90,6 +90,6 @@ class TaskController extends Controller
         $task = Task::find($id); 
 
         $task->delete(); 
-        
+
     }
 }
