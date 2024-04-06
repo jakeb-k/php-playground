@@ -14,14 +14,16 @@ import { Head } from '@inertiajs/vue3';
             <label for="due_date" class="mb-2">Due date:</label>
             <input id="due_date" type="date" v-model="task.due_date" class="mb-4 rounded-md"/>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Submit
+            <button type="submit" @click="updateTask()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Update
             </button>
         </form>
 
   
 </template>
 <script>
+import { router } from '@inertiajs/vue3';
+
 export default {
   mounted() {
     console.log(this.$page.props.task); // Accessing the task object
@@ -29,6 +31,11 @@ export default {
   computed: {
     task() {
       return this.$page.props.task;
+    }
+  },
+  methods: {
+    updateTask(){
+        router.put(`/vue-playground/public/tasks/${this.$page.props.task.id}`, this.$page.props.task)
     }
   }
 }

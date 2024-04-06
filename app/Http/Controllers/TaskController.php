@@ -20,7 +20,7 @@ class TaskController extends Controller
         $tasks = Task::all(); 
         
         foreach($tasks as $task){
-            $task->due_date = Carbon::parse($task->due_date)->format('d/m'); 
+            $task->due_date = Carbon::parse($task->due_date)->format('d/m/y'); 
         }
         return Inertia::render('Dashboard', [
             'tasks' => $tasks,
@@ -52,7 +52,7 @@ class TaskController extends Controller
         $task->due_date = $validatedData['due_date']; 
         $task->save(); 
 
-        session()->flash('success_msg', 'Goal was added!');
+        session()->flash('success_msg', 'Task was added!');
         
         return Inertia::location(url('/dashboard'));
 
@@ -82,7 +82,23 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+     
+        $validatedData = $request->validate([
+            'task' => 'required|max:80',
+            'priority' => 'required',
+            'due_date' => 'required'
+        ]);
+
+        $task = Task::find($id); 
+        $task->task = $validatedData['task'];
+        $task->priority = $validatedData['priority'];
+        $task->due_date = $validatedData['due_date']; 
+     
+        $task->save(); 
+
+        session()->flash('success_msg', 'Goal was added!');
+        
+        return Inertia::location(url('/dashboard'));
     }
 
     /**
