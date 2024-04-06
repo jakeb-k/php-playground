@@ -1,8 +1,24 @@
+<script setup>
+import { Inertia } from '@inertiajs/inertia';
+
+function deleteTask(taskId) {
+      if (confirm('Are you sure you want to delete this task?')) {
+        Inertia.delete(`/vue-playground/public/tasks/${taskId}`, {
+          onSuccess: () => {
+            this.$inertia.replace('/dashboard');
+          }
+        });
+      }
+    }
+</script>
 <template>
     <div class="flex justify-center">
         <div :class="getPriorityClass(task.priority)">
            <p class="text-xl">{{ task.task }}</p> 
-            <p class="text-right">{{ task.due_date }}</p>
+            <div class="flex justify-evenly">
+                <button @click="deleteTask(task.id)">DELETE</button>
+                <p>{{ task.due_date }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -25,4 +41,5 @@
             }
         },
     }
+    
 </script>
