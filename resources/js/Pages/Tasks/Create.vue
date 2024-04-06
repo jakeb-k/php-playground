@@ -1,8 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Task from '@/Components/Task.vue';
 import ExampleComponent from '@/Components/ExampleComponent.vue';
-import { Head } from '@inertiajs/vue3';
+import Form from '@/Components/Form.vue'; 
 
 
 const props = defineProps({
@@ -11,6 +10,6 @@ const props = defineProps({
 </script>
 <template>
     <AuthenticatedLayout>
-        <ExampleComponent></ExampleComponent>
+        <Form></Form>
     </AuthenticatedLayout>
 </template>

@@ -26,7 +26,7 @@ const props = defineProps({
                     <div v-for="task in tasks">
                         <Task :task="task"></Task>
                     </div>
-                    <Link href="tasks/create">Add Task</Link>
+                    <Link class="rounded-lg m-20 p-5 bg-green-400 hover:bg-white hover:border-gray-700 border-transparent border-2" href="tasks/create">Add Task</Link>
 
                 </div>
             </div>

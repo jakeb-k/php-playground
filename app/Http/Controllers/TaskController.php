@@ -40,6 +40,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request); 
         $validatedData = $request->validate([
             'task' => 'required|max:80',
             'priority' => 'required|integer',
