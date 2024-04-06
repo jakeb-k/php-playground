@@ -16,11 +16,11 @@
             getPriorityClass(priority) {
                 switch(priority){
                     case 1 :
-                        return 'my-2.5 w-1/2 rounded-md bg-red-500 px-20 py-5';
+                        return 'my-2.5 w-1/2 rounded-md bg-red-400 px-20 py-5';
                     case 2 :
-                        return 'my-2.5 w-1/2 rounded-md bg-yellow-500 px-20 py-5';
+                        return 'my-2.5 w-1/2 rounded-md bg-yellow-400 px-20 py-5';
                     case 3 :
-                        return 'my-2.5 w-1/2 rounded-md bg-green-500 px-20 py-5';
+                        return 'my-2.5 w-1/2 rounded-md bg-green-400 px-20 py-5';
                 }
             }
         },

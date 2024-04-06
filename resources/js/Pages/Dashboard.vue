@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Task from '@/Components/Task.vue';
-import ExampleComponent from '@/Components/ExampleComponent.vue';
+import { Link } from '@inertiajs/vue3'; 
 import { Head } from '@inertiajs/vue3';
 
 
@@ -22,11 +22,12 @@ const props = defineProps({
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">Your Tasks</div>
+                    <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
                     <div v-for="task in tasks">
                         <Task :task="task"></Task>
                     </div>
-                   
+                    <Link href="tasks/create">Add Task</Link>
+
                 </div>
             </div>
         </div>

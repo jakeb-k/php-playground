@@ -8,6 +8,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon; 
 
 class TaskController extends Controller
 {
@@ -18,6 +19,9 @@ class TaskController extends Controller
     {
         $tasks = Task::all(); 
         
+        foreach($tasks as $task){
+            $task->due_date = Carbon::parse($task->due_date)->format('d/m'); 
+        }
         return Inertia::render('Dashboard', [
             'tasks' => $tasks,
         ]);
@@ -28,7 +32,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+       return Inertia::render('Tasks/Create');
     }
 
     /**
@@ -36,7 +40,22 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'task' => 'required|max:80',
+            'priority' => 'required|integer',
+            'due_date' => 'required|date'
+        ]);
+
+        $task = new Task(); 
+        $task->task = $validatedData['task'];
+        $task->priority = $validatedData['priority'];
+        $task->due_date = $validatedData['due_date']; 
+        $task->save(); 
+
+        return Inertia::render('Dashboard', [
+            'tasks' => $tasks,
+            'success_msg'=> 'Successfully added task!' 
+        ]);
     }
 
     /**
