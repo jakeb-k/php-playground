@@ -52,10 +52,10 @@ class TaskController extends Controller
         $task->due_date = $validatedData['due_date']; 
         $task->save(); 
 
-        $tasks = Task::all(); 
-        return Inertia::render('Dashboard', [
-            'tasks' => $tasks,
-        ]);
+        session()->flash('message', 'Goal was added!');
+
+        return Inertia::location(url('/dashboard'));
+
 
     }
 
@@ -97,7 +97,8 @@ class TaskController extends Controller
      
         $task->save(); 
 
-        session()->flash('success_msg', 'Goal was added!');
+        session()->flash('message', 'Goal was updated!');
+
         
         return Inertia::location(url('/dashboard'));
     }

@@ -7,7 +7,8 @@ import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
     tasks: Array,
-    flash: Object
+    flash: Object,
+    success_msg: String,
 })
 </script>
 
@@ -22,6 +23,8 @@ const props = defineProps({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex justify-between">
                         <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
+                        <span class="text-green-600 mb-4" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</span>
+
                         <Link class="rounded-lg h-10 mt-5 mr-10 p-2 bg-green-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
                               href="tasks/create">Add Task</Link>
 
@@ -35,3 +38,12 @@ const props = defineProps({
         </div>
     </AuthenticatedLayout>
 </template>
+
+<script>
+    export default {
+
+        mounted() {
+            console.log(this.$page.props)
+        }
+    }
+</script>
