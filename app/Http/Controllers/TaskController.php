@@ -42,7 +42,7 @@ class TaskController extends Controller
     {
         $validatedData = $request->validate([
             'task' => 'required|max:80',
-            'priority' => 'required|integer',
+            'priority' => 'required|integer|gt:0|lt:4',
             'due_date' => 'required|date'
         ]);
 
@@ -52,9 +52,10 @@ class TaskController extends Controller
         $task->due_date = $validatedData['due_date']; 
         $task->save(); 
 
-        session()->flash('success_msg', 'Task was added!');
-        
-        return Inertia::location(url('/dashboard'));
+        $tasks = Task::all(); 
+        return Inertia::render('Dashboard', [
+            'tasks' => $tasks,
+        ]);
 
     }
 
@@ -85,8 +86,8 @@ class TaskController extends Controller
      
         $validatedData = $request->validate([
             'task' => 'required|max:80',
-            'priority' => 'required',
-            'due_date' => 'required'
+            'priority' => 'required|integer|gt:0|lt:4',
+            'due_date' => 'required:date'
         ]);
 
         $task = Task::find($id); 
