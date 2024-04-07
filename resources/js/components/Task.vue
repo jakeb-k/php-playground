@@ -2,14 +2,18 @@
 import { Link } from '@inertiajs/vue3'; 
 </script>
 <template>
-    <div class="flex justify-center">
-        <div :class="getPriorityClass(task.priority)">
-           <p class="text-xl">{{ task.task }}</p> 
-            <div class="flex flex-row justify-evenly flex-nowrap items-center mt-5 w-full">
-                <Link class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
-                      :href="'tasks/'+task.id+'/edit'">EDIT</Link>
-                <button class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" @click="deleteTask(task.id)">DELETE</button>
-                <p>{{ task.due_date }}</p>
+    <div ref="animateElement" class="opacity-0 transform translate-y-10">
+
+        
+        <div class="flex justify-center ">
+            <div :class="getPriorityClass(task.priority)">
+            <p class="text-xl">{{ task.task }}</p> 
+                <div class="flex flex-row justify-evenly flex-nowrap items-center mt-5 w-full">
+                    <Link class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
+                        :href="'tasks/'+task.id+'/edit'">EDIT</Link>
+                    <button class="rounded-lg h-10 mr-5 p-2 bg-grey-400 hover:bg-white hover:border-gray-700 border-transparent border-2" @click="deleteTask(task.id)">DELETE</button>
+                    <p>{{ task.due_date }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -42,6 +46,18 @@ import { Inertia } from '@inertiajs/inertia';
                     });
                 }
             }
+        },
+        mounted() {
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                this.$refs.animateElement.classList.add('transition','duration-1000', 'opacity-100', 'translate-y-0');
+                this.$refs.animateElement.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+            });
+
+            observer.observe(this.$refs.animateElement);
         },
     }
     
