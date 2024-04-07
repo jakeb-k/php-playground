@@ -14,6 +14,7 @@ class Task extends Model
         'task',
         'priority',
         'due_date',
+        'user_id'
     ]; 
 
     use HasFactory;

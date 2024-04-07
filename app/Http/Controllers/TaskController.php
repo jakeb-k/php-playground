@@ -17,7 +17,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('priority')->get();; 
+        $tasks = auth()->user()->tasks()
+                ->orderBy('priority')
+                ->get();
         
         foreach($tasks as $task){
             $task->due_date = Carbon::parse($task->due_date)->format('d/m/y'); 
@@ -50,6 +52,7 @@ class TaskController extends Controller
         $task->task = $validatedData['task'];
         $task->priority = $validatedData['priority'];
         $task->due_date = $validatedData['due_date']; 
+        dd($task); 
         $task->save(); 
 
         session()->flash('message', 'Goal was added!');
@@ -87,7 +90,7 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'task' => 'required|max:80',
             'priority' => 'required|integer|gt:0|lt:4',
-            'due_date' => 'required:date'
+            'due_date' => 'required|date'
         ]);
 
         $task = Task::find($id); 

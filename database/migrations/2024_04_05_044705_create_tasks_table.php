@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('task'); 
             $table->integer('priority');
             $table->date('due_date');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -6,7 +6,6 @@ import NavLink from '@/Components/NavLink.vue';
 
 import { Link } from '@inertiajs/vue3';
 
-const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
@@ -26,7 +25,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div class=" w-2/5 flex justify-evenly items-center">
-                                <Link :href="route('profile.edit')"> Profile </Link>
+                                <Link :href="route('profile.edit')"> {{ $page.props.auth.user.name }} </Link>
                                 <Link :href="route('logout')" method="post" as="button">
                                     Log Out
                                 </Link>
