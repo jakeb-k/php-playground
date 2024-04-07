@@ -18,9 +18,7 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex justify-around items-center w-2/5 ">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <p class="font-bold text-2xl font-serif hover:underline tracking-wider"> Todo </p>
                                 </Link>
 
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">

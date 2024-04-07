@@ -17,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all(); 
+        $tasks = Task::orderBy('priority')->get();; 
         
         foreach($tasks as $task){
             $task->due_date = Carbon::parse($task->due_date)->format('d/m/y'); 

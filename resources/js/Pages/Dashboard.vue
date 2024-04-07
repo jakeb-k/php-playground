@@ -18,9 +18,9 @@ const props = defineProps({
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
-        <div class="py-12 bg-red-500/5 h-auto h-screen">
-            <div class="max-w-7xl mx-auto  shadow-lg w-full">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="py-12 bg-red-500/5 h-aut">
+            <div class="max-w-7xl mx-auto shadow-lg w-full bg-red-500/5">
+                <div class="bg-white shadow-sm sm:rounded-lg ">
                     <div class="flex justify-between">
                         <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
                         <div class="text-green-600 mt-8" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</div>
