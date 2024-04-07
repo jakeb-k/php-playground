@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
-class TaskControllerTest extends TestCase
+class CreateTaskTest extends TestCase
 
 {
     use RefreshDatabase, WithFaker;
