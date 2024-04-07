@@ -52,7 +52,8 @@ class TaskController extends Controller
         $task->task = $validatedData['task'];
         $task->priority = $validatedData['priority'];
         $task->due_date = $validatedData['due_date']; 
-        dd($task); 
+        $task->user_id = Auth::user()->id; 
+        
         $task->save(); 
 
         session()->flash('message', 'Goal was added!');

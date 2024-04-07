@@ -26,7 +26,7 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs($user)->post('/tasks', $taskData);
 
-        $response->assertStatus(201);
+        $response->assertStatus(302);
         $this->assertDatabaseHas('tasks', $taskData);
     }
     /**
@@ -53,8 +53,8 @@ class TaskControllerTest extends TestCase
 
         $invalidTask = [
             'task' => 'Invalid task',
-            'due_date' => '30/09/2001',
-            'priority' => '1', 
+            'due_date' => 24,
+            'priority' => 'abc', 
             'user_id' => $user->id 
         ];
 
@@ -80,7 +80,7 @@ class TaskControllerTest extends TestCase
                 'due_date' => now()->addDays(2),
             ];
             $response = $this->actingAs($user)->post('/tasks', $taskData); 
-            $response->assertStatus(201);
+            $response->assertStatus(302);
 
             $this->assertDatabaseHas('tasks', $taskData);
         }
@@ -100,7 +100,7 @@ class TaskControllerTest extends TestCase
                 'due_date' => now()->addDays(2),
             ];
             $response = $this->actingAs($user)->post('/tasks', $invalidData); 
-            $response->assertStatus(422);
+            $response->assertStatus(302);
 
             $this->assertDatabaseMissing('tasks', $invalidData);
         }
