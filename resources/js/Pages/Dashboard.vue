@@ -18,12 +18,12 @@ const props = defineProps({
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="py-12 bg-red-500/5 h-auto h-screen">
+            <div class="max-w-7xl mx-auto  shadow-lg w-full">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex justify-between">
                         <div class="text-3xl p-6 text-gray-900">Your Tasks</div>
-                        <span class="text-green-600 mb-4" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</span>
+                        <div class="text-green-600 mt-8" v-if="$page.props.flash.message">{{ $page.props.flash.message }}</div>
 
                         <Link class="rounded-lg h-10 mt-5 mr-10 p-2 bg-green-400 hover:bg-white hover:border-gray-700 border-transparent border-2" 
                               href="tasks/create">Add Task</Link>
