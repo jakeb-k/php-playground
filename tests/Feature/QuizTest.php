@@ -53,7 +53,38 @@ class QuizTest extends TestCase
   }
 
   #[Test]
-  public function it_cannot_be_graded_if_its_not_completed(){
+  public function it_cannot_be_graded_if_not_completed(){
+    $quiz = new Quiz(); 
+    $quiz->addQuestion(new Question('What is 1+1', 2));
+    $quiz->addQuestion(new Question('What is 2+2', 4));
+
+    $question = $quiz->nextQuestion();
+    $question->answer(2);
+
+    $this->expectException(\Exception::class);
+    $this->expectExceptionMessage('Error: Quiz has not been completed');
+
+    $quiz->grade(); 
+  }
+
+  #[Test]
+  public function it_can_be_graded_if_its_completed(){
+    $quiz = new Quiz(); 
+    $quiz->addQuestion(new Question('What is 1+1', 2));
+    $quiz->addQuestion(new Question('What is 2+2', 4));
+    
+    $question = $quiz->nextQuestion();
+    $question->answer(2);
+    $question = $quiz->nextQuestion();
+    $question->answer(4);
+
+    
+
+    $this->assertEquals(100, $quiz->grade()); 
+  }
+
+  #[Test]
+  public function it_can_be_checked_if_its_completed(){
     $quiz = new Quiz(); 
     $quiz->addQuestion(new Question('What is 1+1', 2));
     $quiz->addQuestion(new Question('What is 2+2', 4));
@@ -65,7 +96,7 @@ class QuizTest extends TestCase
   }
 
   #[Test]
-  public function it_can_be_graded_if_its_completed(){
+  public function it_can_be_checked_if_its_not_completed(){
     $quiz = new Quiz(); 
     $quiz->addQuestion(new Question('What is 1+1', 2));
     $quiz->addQuestion(new Question('What is 2+2', 4));

@@ -25,6 +25,10 @@ class Quiz
     }
     
     public function grade() {
+
+        if(!$this->isCompleted()){
+            throw new \Exception('Error: Quiz has not been completed'); 
+        }
         return count($this->correctlyAnsweredQuestions()) / count($this->questions) * 100; 
     }
 
